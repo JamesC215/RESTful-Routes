@@ -1,0 +1,76 @@
+
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Title: </div>
+  <div><%= climb.title %></div>
+  <div>Grade Rating: </div>
+  <div><%= climb.gradeRating %></div>
+  <div>Completed: </div>
+  <div><%= climb.completed ? 'Yes' : 'No' %></div>
+  <div>Equipment Needed:</div>
+  <ul>
+    <% climb.equipment.forEach(e => { %>
+      <li>
+        <%= e.title %> <small><%= e.createdAt %></small>
+        <form method="POST" action="/climbs/<%= climb._id %>/equipment/<%= e._id %>?_method=DELETE">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</section>
+<form id="add-climb-to-equip" action="/climbs/<%= climb._id %>/equipments" method="POST">
+  <select name="equipmentId">
+    <%- equipments.map(e => 
+      `<option value="${e._id}">${e.equipment}</option>`).join('') %>
+  </select>
+  <button type="submit">Add to Equipment List</button>
+</form>
+
+<br><br><h2>Reviews</h2>
+<form id="add-review-form" method="POST"
+  action="/climbs/<%= climb._id %>/reviews">
+  <label>Review:</label>
+  <textarea name="content"></textarea>
+  <label>Rating:</label>
+  <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5" selected>5</option>
+  </select>
+  <input type="submit" value="Add Review">
+</form>
+
+<% if (climb.reviews.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Review</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let total = 0 %>
+      <% climb.reviews.forEach(function(r) { %>
+        <% total += r.rating %>
+        <tr>
+          <td><%= r.createdAt.toLocaleDateString() %></td>
+          <td><%= r.content %></td>
+          <td><%= r.rating %></td>
+        </tr>
+      <% }); %>
+      <tr>
+        <td colspan="2"></td>
+        <td><strong><%= (total / climb.reviews.length).toFixed(1) %></strong></td>
+      </tr>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No Reviews Yet</h5>
+<% } %>
+  
+<%- include('../partials/footer') %>

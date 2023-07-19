@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
+  <title><%= title %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body class="climb-bg">
+  <nav>
+    <div class="me-auto">
+        <a class="navbar-brand" href="">RESTful Routes</a>
+      </div>
+    <a href="/climbs" <%- title === 'All Climbs' ? 'class="active"' : '' %>>OUR CLIMBS</a>
+    <% if (user) { %>
+      <a href="/climbs/new" <%- title === 'Add Climbs' ? 'class="active"' : '' %>>ADD A NEW CLIMB</a>
+      <a href="/equipments/new"	<%- title === 'Add Equipment' ? 'class="active"' : '' %>>
+      ADD NEW EQUIPMENT</a>
+      <a href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="jumbotron">
+        <h2><%= title %></h2>
+        <p>Use the links to navigate around the website</p>
+      </div>
+      <p>Ensure you are logged in to plan your RESTful Routes!</p>
+    </div>
+    

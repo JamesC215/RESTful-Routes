@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Alegreya Sans SC';
+  text-align: center;
+  justify-content: center;
+}
+h1 {
+  text-align: center;
+}
+.climb-bg {
+  background-image: url("https://images.hdqwalls.com/wallpapers/batman-climbing-wall-8k-26.jpg");
+  background-size: cover;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
+}
+
+body > nav {
+  grid-area: nav;
+  background-color: #B8C0C2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 30px;
+}
+
+nav > img {
+  width: 34px;
+  object-fit: contain;
+  margin-right: auto;
+}
+
+body > main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E8ECEB;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+body > main h1:first-child {
+  margin-bottom: 50px;
+}
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: red;
+}
+nav {
+  text-align: left;
+}
+
+nav > a:hover:not(.active) {
+  color: white;
+  background-color: #424748;
+}
+
+nav > a.active {
+  color: white;
+  cursor: default;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 30px;
+  
+}
+ 
+table {
+  text-align: center;
+}
+title {
+  text-align: center;
+}
+#add-review-form,
+#add-equipment-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+#new-form *,
+#add-review-form *,
+#add-equipment-form * {
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#new-form input[type="submit"] {
+  grid-column: span 2;
+  width: 10rem;
+  margin-left: auto;
+}
+#add-review-form,
+#add-equipment-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#add-review-form input[type="submit"],
+#add-equipment-form input[type="submit"]  {
+  width: 10rem;
+  grid-column: 2 / 3;
+}
+.navbar-brand {
+  color:red;
+}
+table {
+  max-width:50%;
+  white-space:nowrap;
+}
+#details {
+  color: black;
+  text-decoration: none;
+
+}
+#logo {
+  height: 30px;
+}

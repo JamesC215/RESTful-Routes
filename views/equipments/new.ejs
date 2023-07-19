@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<div>Before adding new equipment, please note that it is not in the following list:</div>
+<ul>
+  <% equipments.forEach(function(e) { %>
+    <article><%= e.name %></article>
+  <% }) %>
+</ul>
+
+<form id="add-equipment-form" action="/equipments" method="POST">
+  <label>Equipment Item:</label>
+  <input type="text" name="name">
+  <input type="submit" value="Add Equipment">
+</form>
+
+<%- include('../partials/footer') %>

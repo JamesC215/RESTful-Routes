@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/climbs" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title">
+  <label>Grade Rating:</label>
+  <select name="gradeRating">
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="5+">5+</option>
+    <option value="6a">6a</option>
+    <option value="6b">6b</option>
+    <option value="6c">6c</option>
+    <option value="7a">7a</option>
+  </select>
+  <label>Completed:</label>
+  <input type="checkbox" name="completed" checked>
+  <input type="submit" value="Add Climb">
+</form>
+
+<%- include('../partials/footer') %>
