@@ -93,11 +93,15 @@ Insert your Planning here:
 
 For the majority of the planning stage, I used a Trello Board with all of the instructions/information I would need to create the project, including Wireframes (created through https://excalidraw.com/) and an ERD to guide me through the MVC stage of my project.
 
+Find below a screenshot of an example of one of my wireframes:
+
+
 See below a screenshot of my Trello Board:
 
 
+To create my ERD, I used the website: https://www.lucidchart.com/pages/
 
-
+Please see a screenshot of my ERD below:
 
 
 ## Build/Code Process
