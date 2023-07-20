@@ -7,6 +7,8 @@ The requirements of this app were that it should have full CRUD functionality us
 
 I wanted to create a Rock Climbing Planner, to be able to plan routes and have details of what equipment would be needed, and if it had been completed yet.
 
+I also wanted users to be able to log in and update what equipment is needed by deleting and adding new equipment, and also change whether they had completed it or not.
+
 As a Rock Climber myself, I thought it would be a good app to create.
 
 ## Deployment link
@@ -66,8 +68,6 @@ Optionally, Your App May:
 
 ☐ Expose its own API where it returns data resources as JSON.
 
-
-
 Necessary Deliverables
 
 ☐ A working full-stack app that meets or exceeds the above technical requirements, built by you, and hosted on Heroku.
@@ -116,18 +116,24 @@ To begin my build, I started by creating a skeleton app through Express-Generato
 
 I then installed all of the relevant packages I would need by running the command npm (Node Package Manager) to install what I needed, such as Mongoose, Google OAuth and Method_Override.
 
-I then initialised my database through a .env file, and passed it into a config folder that included a database file.
+Upon completion of installing the relevant packages, I initialised my database through a .env file, and passed it into a config folder that included a database file.
 
 After doing these steps, I created basic landing pages that I would need through the views folder, after which I could move on to creating basic navigation.
 
 I created basic navigation around the app using the MVC method, of which I created hyperlinks through HTML and attached GET requests so the server would recognise that we were wanting to navigate to a new page.
+
+### At this stage, this is what my app looked like: 
+
+<img width="1274" alt="Screenshot 2023-07-20 at 11 27 56" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/546f4e79-3dd9-4c78-89b7-b622e983e7c4">
 
 Then, I moved onto adding features to my app, of which the CREATE functionality came first:
 
 I referenced this line of code in my climbs.js router:
 `router.post('/', climbsCtrl.create);`
 
-And used the function below in my climbs.js controller to create a new form to add a climb:
+And used the function below in my climbs.js controller to create a new form to add a climb.
+The code snippet below allows the users functionality to create a new climb, and this function is one that took me quite a while.
+I used an async function with try/catch method, to catch any errors that may arise from the creation of the climb.
 `async function create(req, res) {
   req.body.completed = !!req.body.completed;
   for (let key in req.body) {
@@ -142,7 +148,7 @@ And used the function below in my climbs.js controller to create a new form to a
   }
 }`
 
-I then wanted to implement updating and destroying functionality into my application
+I then wanted to implement updating and destroying functionality into my application, of which I had been struggling to do throughout my project, and thus I would like to show these snippets below:
 
 ## Challenges
 
@@ -156,7 +162,7 @@ To help solve this, I implemented some Bootstrap into my application, which is e
 
 ## Wins
 
-I did not have any one win in particular, however, I found this topic a big step up from my last topic, and so I would class the whole project as a win, as I feel more confident on the topics of such things as MVC, ERD's and the MEN application stack.
+I did not have any one win in particular on this project. However, I found this topic a big step up from my last topic, and so I would class the whole project as a win; I feel more confident on the topics of such things as MVC, ERD's and the MEN application stack.
 
 ## Key Learnings/Takeaways
 
@@ -168,12 +174,17 @@ I know now I need to be a bit more proactive when I am coding, as I get stuck on
 
 ## Bugs
 
-TBC
+The page changes size depending on whether you are logged in or not.
+The avatar images on the reviews section do not render properly. Need to add CSS or Bootstrap to sort this.
+The Navbar "Add new climb" is not highlighted when it is selected like the other options are. 
 
 ## Future Improvements
 
 Upon completion of the project, I had several things I wanted to implement but I either did not have the time or the technical ability to do so.
 
 These include:
+- Add more update/delete functionality to the 'Climbs' page, so users can edit/delete the climbs and start again.
+- I wanted to add a page with a carousel of pictures you can scroll through, and I would have implemented this through Bootstrap, however, I did not have the time for it.
 - Adding an Outdoor Climbs page, which would have a GeoLocation tag users could update so other users can see where the climb is.
-- Add a gym page for the app.
+- Media queries for phones, tablets, smaller screens etc.
+- To make the website look more professional, using both CSS and Bootstrap.
