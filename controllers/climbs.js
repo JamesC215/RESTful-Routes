@@ -1,4 +1,5 @@
 const Climb = require('../models/climb');
+const equipment = require('../models/equipment');
 const Equipment = require('../models/equipment');
 
 module.exports = {
@@ -10,10 +11,23 @@ module.exports = {
   delete: deleteEquip
 };
 
-function deleteEquip(req, res) {
-  Climb.deleteOne(req.params.id);
-  res.redirect('/climbs')
+async function deleteEquip(req, res) {
+  try {
+    const climb = await Climb.findById(req.params.id).populate('equipment');
+    const newEquipment = climb.equipment.filter((item) => item._id.toString() !== req.params.equipmentid);
+    const defaultUser = req.user; 
+    climb.equipment = newEquipment;
+    climb.reviews.forEach((review) => {
+      review.user = review.user || defaultUser;
+    });
+
+    await climb.save();
+    res.redirect(`/climbs/${req.params.id}`);
+  } catch (error) {
+    res.status(500).send("Error updating climb.");
+  }
 }
+
 
 function edit(req, res) {
   const climb = Climb.getOne(req.params.id);
