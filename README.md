@@ -7,53 +7,32 @@ The requirements of this app were that it should have full CRUD functionality us
 
 ## Deployment link
 
-Instructions
-
-Here include the information on where the deployed project can be found. If login details are needed to access the full project, make sure you include them.
-
-If you have not yet deployed your project, you can add this in later.
-
-Insert your Deployment link here:
-
-
-
 
 ## Getting Started/Code Installation
 
-Instructions
+Fork and clone this repo if you want to take a deeper look into the code.
 
-Explain how the reader accesses your code. Include a step by step approach.
-
-Insert your Getting Started/Code Installation here:
-
-
-
-
+You can also access the files through GitHub in my repository.
 
 ## Timeframe & Working Team (Solo/Pair/Group)
 
-Instructions
-
-Share the timeframe given for the project and whether you worked independently, in a pair, or in a group.
-
-If you worked in a pair or group, include the names of the people you collaborated with. As a bonus, you can also provide links to their GitHub repo.
-
-Insert your Timeframe & Working Team here:
-
-
-
-
+We were asked to work individually on this project and given four days on Project Week to complete the assigned task.
 
 ## Technologies Used
 
-Instructions
+**Back End**
+- MongoDB & Mongoose - database usage for the application
+- Express - creating a skeleton app using Express Generator and implementing EJS into the project
+- Node.js - running the app outside the browser
 
-List every technology you used to complete the project. This can be in one long list, or broken down into categories (Back End, Front End, Development Tools).
+**Front End**
+- EJS - embedded JavaScript into the HTML
+- CSS - for styling the application
+- Bootstrap - additional styling for the application
+- HTML - to display information on pages
 
-Insert your Technologies Used here:
-
-
-
+**Development Tools**
+- 
 
 
 ## Brief
