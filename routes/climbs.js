@@ -7,6 +7,6 @@ router.get('/new', climbsCtrl.new);
 router.get('/:id', climbsCtrl.show);
 router.get('/:id/edit', climbsCtrl.edit);
 router.post('/', climbsCtrl.create);
-router.delete('/:id', climbsCtrl.delete)
+router.post('/:id/equipment/:equipmentid', climbsCtrl.delete);
 	
 module.exports = router;

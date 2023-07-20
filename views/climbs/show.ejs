@@ -20,8 +20,9 @@
     <% climb.equipment.forEach(e => { %>
       <li>
         <%= e.name %>
-        <form method="POST" action="/climbs/<%= e._id %>?_method=DELETE">
+        <form method="POST" action="/climbs/<%= climb._id %>/equipment/<%= e._id %>">
           <% if (user) { %>
+          <input type="hidden" name="_method" value="DELETE">
           <button type="submit">Delete</button>
           <% } %>
         </form>
@@ -72,16 +73,12 @@
       <% climb.reviews.forEach(function(r) { %>
         <% total += r.rating %>
         <tr>
-          <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
+          <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" width="35" height="35" class="d-inline-block align-text-top rounded-circle" ><%= r.userName %></td>
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.content %></td>
           <td><%= r.rating %></td>
         </tr>
       <% }); %>
-      <tr>
-        <td colspan="3"></td>
-        <td><strong><%= (total / climb.reviews.length).toFixed(1) %></strong></td>
-      </tr>
     </tbody>
   </table>
 <% } else { %>
