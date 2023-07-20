@@ -12,10 +12,9 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-app.set("port", process.env.PORT || 8000);
-
-app.listen(app.get("port"), () => {
-  console.log(`✅ PORT: ${app.get("port")} 🌟`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
 /**
