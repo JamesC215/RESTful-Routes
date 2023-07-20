@@ -12,7 +12,7 @@
   <ul>
     <% climb.equipment.forEach(e => { %>
       <li>
-        <%= e.title %> <small><%= e.createdAt %></small>
+        <%= e.name %>
         <form method="POST" action="/climbs/<%= climb._id %>/equipment/<%= e._id %>?_method=DELETE">
           <button type="submit">Delete</button>
         </form>
@@ -23,7 +23,7 @@
 <form id="add-climb-to-equip" action="/climbs/<%= climb._id %>/equipments" method="POST">
   <select name="equipmentId">
     <%- equipments.map(e => 
-      `<option value="${e._id}">${e.equipment}</option>`).join('') %>
+      `<option value="${e._id}">${e.name}</option>`).join('') %>
   </select>
   <button type="submit">Add to Equipment List</button>
 </form>
