@@ -124,6 +124,8 @@ I created basic navigation around the app using the MVC method, of which I creat
 
 ### At this stage, this is what my app looked like: 
 
+<img width="1274" alt="Screenshot 2023-07-20 at 11 27 56" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/546f4e79-3dd9-4c78-89b7-b622e983e7c4">
+
 Then, I moved onto adding features to my app, of which the CREATE functionality came first:
 
 I referenced this line of code in my climbs.js router:
