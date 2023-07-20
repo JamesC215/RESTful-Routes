@@ -44,7 +44,7 @@ We were asked to work individually on this project and given four days on Projec
 
 ## Brief
 
-See below the brief given my my instructional team:
+See below the brief given to me by my instructional team:
 
 Your App Must:
 
@@ -124,7 +124,25 @@ I created basic navigation around the app using the MVC method, of which I creat
 
 Then, I moved onto adding features to my app, of which the CREATE functionality came first:
 
+I referenced this line of code in my climbs.js router:
+`router.post('/', climbsCtrl.create);`
 
+And used the function below in my climbs.js controller to create a new form to add a climb:
+`async function create(req, res) {
+  req.body.completed = !!req.body.completed;
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
+  try {
+    const climb = await Climb.create(req.body);
+    res.redirect(``/climbs/${climb._id}``);
+  } catch (err) {
+    console.log(err);
+    res.render('climbs/new', { errorMsg: err.message });
+  }
+}`
+
+I then wanted to implement updating and destroying functionality into my application
 
 ## Challenges
 
@@ -138,19 +156,7 @@ To help solve this, I implemented some Bootstrap into my application, which is e
 
 ## Wins
 
-Instructions
-
-The Wins section is your opportunity to highlight the aspects of your project you are most proud of. See this as your chance to showcase these parts of your projects to the engineers reading your ReadMes.
-
-Things you could discuss here:
-
-Interesting problem solving you did
-Strong sections of code
-Collaboration with other team members
-Visual design of the project
-
-Insert your Wins here:
-
+I did not have any one win in particular, however, I found this topic a big step up from my last topic, and so I would class the whole project as a win, as I feel more confident on the topics of such things as MVC, ERD's and the MEN application stack.
 
 ## Key Learnings/Takeaways
 
