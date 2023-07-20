@@ -1,9 +1,13 @@
-# RESTful-Routes Web Application
+# RESTful-Routes Rock Climbing Planner
 ## Description
 
 As a cohort of General Assembly SEI-73, we were given the task of creating a web application and deploying it through Heroku. 
 
 The requirements of this app were that it should have full CRUD functionality using the MEN (MongoDB, Express, Node.js) application stack and also that we had to implement OAuth authorisation to protect certain routes in the project.
+
+I wanted to create a Rock Climbing Planner, to be able to plan routes and have details of what equipment would be needed, and if it had been completed yet.
+
+As a Rock Climber myself, I thought it would be a good app to create.
 
 ## Deployment link
 
@@ -23,7 +27,7 @@ We were asked to work individually on this project and given four days on Projec
 **Back End**
 - MongoDB & Mongoose - database usage for the application
 - Express - creating a skeleton app using Express Generator and implementing EJS into the project
-- Node.js - running the app outside the browser
+- Node.js - running the app outside the browser and installing relevant packages
 
 **Front End**
 - EJS - embedded JavaScript into the HTML
@@ -40,7 +44,7 @@ We were asked to work individually on this project and given four days on Projec
 
 ## Brief
 
-See below the brief given my my instructional team:
+See below the brief given to me by my instructional team:
 
 Your App Must:
 
@@ -72,37 +76,23 @@ A README.md file with these sections (here's a basic template):☐ App Title: Co
 
 ## Planning
 
-Instructions
+For the majority of the planning stage, I used a Trello Board with all of the instructions/information I would need to create the project, including Wireframes  and an ERD to guide me through the MVC stage of my project.
 
-The planning stage is important, as all projects in your future roles will have detailed plans before any coding happens. It is a great experience to share with potential engineer employers, as this reflects real engineering team practices. 
+### Find below a screenshot of an example of one of my wireframes:
+To create my wireframes, I used https://excalidraw.com/
 
-Start by explaining the initial steps you took in the project. 
+<img width="1354" alt="Screenshot 2023-07-14 at 16 33 18" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/703e2aa0-f18c-49d0-bf7b-373a7211fde2">
 
-Did you do any sketches? If so, discuss this and include images.
-Any wireframes of the front end and UI? You did? Then explain this and include images.
-Any ERDs? Same here, explain and include images.
-Use a project management tool to plan the sprint? If so, talk through this - what tool did you use? How you allocated tickets/responsibilities, sprint timeline etc. Also include screenshots of this.
-Any pseudocode? 
-If it was a group or pair project - Discuss who was designated which tasks. This is very important, as engineers want to understand who owned the different code elements when looking at a group project.
+### See below a screenshot of my Trello Board:
+To create this, I used https://trello.com/
 
-For each project, review the above bullets and discuss every step you took in the planning stage, including the relevant images.
-
-Not every project will include the above, but it’s important to discuss any of the bullets that you did implement.
-
-Insert your Planning here:
-
-For the majority of the planning stage, I used a Trello Board with all of the instructions/information I would need to create the project, including Wireframes (created through https://excalidraw.com/) and an ERD to guide me through the MVC stage of my project.
-
-Find below a screenshot of an example of one of my wireframes:
+<img width="1427" alt="Screenshot 2023-07-20 at 11 25 34" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/f2914ed0-730f-4cec-91c1-802aa81e517d">
 
 
-See below a screenshot of my Trello Board:
-
-
+### Please see a screenshot of my ERD below:
 To create my ERD, I used the website: https://www.lucidchart.com/pages/
 
-Please see a screenshot of my ERD below:
-
+<img width="952" alt="Screenshot 2023-07-14 at 15 31 24" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/2b9c7328-70b1-44a9-a0c1-32f72a9b0d0b">
 
 ## Build/Code Process
 
@@ -122,90 +112,68 @@ Some people will document the build/code process by discussing the key stages th
 
 Insert your Build/Code Process here:
 
+To begin my build, I started by creating a skeleton app through Express-Generator to create a rudimentary Express application that I could edit to build my project.
 
+I then installed all of the relevant packages I would need by running the command npm (Node Package Manager) to install what I needed, such as Mongoose, Google OAuth and Method_Override.
 
+I then initialised my database through a .env file, and passed it into a config folder that included a database file.
 
+After doing these steps, I created basic landing pages that I would need through the views folder, after which I could move on to creating basic navigation.
+
+I created basic navigation around the app using the MVC method, of which I created hyperlinks through HTML and attached GET requests so the server would recognise that we were wanting to navigate to a new page.
+
+Then, I moved onto adding features to my app, of which the CREATE functionality came first:
+
+I referenced this line of code in my climbs.js router:
+`router.post('/', climbsCtrl.create);`
+
+And used the function below in my climbs.js controller to create a new form to add a climb:
+`async function create(req, res) {
+  req.body.completed = !!req.body.completed;
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
+  try {
+    const climb = await Climb.create(req.body);
+    res.redirect(``/climbs/${climb._id}``);
+  } catch (err) {
+    console.log(err);
+    res.render('climbs/new', { errorMsg: err.message });
+  }
+}`
+
+I then wanted to implement updating and destroying functionality into my application
 
 ## Challenges
 
-Instructions
+One of my main challenges I found was sometimes when creating new functionality for the application, it would sometimes break other lines of code in my application. 
 
-Challenges are great for showing your learning journey and problem solving, and this is a section that many engineers will check out. Every day of your engineering career you’ll encounter challenges, this is part of your growth and development. It’s the challenges you encounter that helps you become a stronger and more competent engineer. 
+To help solve this, I would use Chrome Dev Tools to help work out certain routes when I was clicking buttons, for example, and then jump back into the code and edit certain routers etc.
 
-Here you will detail any particular challenges you encountered as you were coding the project. 
+Another challenge was CSS, which I struggle with at the best of times.
 
-Questions to answer here:
-
-What technical challenges did you come across? 
-Why were these challenges? 
-What problem solving did you do to rectify them?
-Team dynamics/ Project management
-Tools/Tech you used
-
-Insert your Challenges here:
-
-
-
+To help solve this, I implemented some Bootstrap into my application, which is easier to use than CSS I find. I will opt to learn more about it in the future.
 
 ## Wins
 
-Instructions
-
-The Wins section is your opportunity to highlight the aspects of your project you are most proud of. See this as your chance to showcase these parts of your projects to the engineers reading your ReadMes.
-
-Things you could discuss here:
-
-Interesting problem solving you did
-Strong sections of code
-Collaboration with other team members
-Visual design of the project
-
-Insert your Wins here:
-
+I did not have any one win in particular, however, I found this topic a big step up from my last topic, and so I would class the whole project as a win, as I feel more confident on the topics of such things as MVC, ERD's and the MEN application stack.
 
 ## Key Learnings/Takeaways
 
-Instructions
+This is my first time using Bootstrap in an application, which on first impressions I find a lot easier to implement than using standard CSS stylings. I will work on it a bit more and hopefully be able to use it more efficiently in future projects.
 
-This section is one of the other most important parts of your ReadMe from an engineers’ perspective and helps to differentiate each of you from your classmates and team members. 
+I feel like I know a lot more about the MVC pattern after using it to implement functionality into my application.
 
-Engineers love to understand what you learn from each project and how it has shaped you as an engineer. 
-
-See this as your opportunity to show the engineers how your skills grew during each project sprint. 
-
-Things you could discuss here:
-
-What Technologies/Tools do you now feel more confident with? Tell them specifically what you learnt about these. 
-What engineering processes did you become more comfortable with? Standups? Pair programming? Project management? Tell them what you learnt from these processes?
-
-Insert your Key Learnings/Takeaways here:
-
-
-
-
+I know now I need to be a bit more proactive when I am coding, as I get stuck on one section for a long while, whereas I find I should leave it alone and go and do other things to refresh myself and hopefully find a solution when I return to the problem.
 
 ## Bugs
 
-Instructions
-
-If you have any bugs in your project, it’s important that you flag them in your ReadMe. This helps the engineers reviewing your projects to understand that you are aware that there are issues - if you don’t flag these, then they won’t have that visibility that you know these problems are in your code and it can result in them not having a full understanding of your technical knowledge. 
-
-In either sentences or bullets, explain what the bugs are.
-
-If you have no bugs, you can leave this section blank.
-
-Insert your Bugs here:
-
-
+TBC
 
 ## Future Improvements
 
-Instructions
+Upon completion of the project, I had several things I wanted to implement but I either did not have the time or the technical ability to do so.
 
-It’s common to get to the end of your project and have ideas on what you would do if you have more time, as well as how you might improve it. 
-
-If you do, you should detail this here. It’s great to give that context on potential future improvements, to share your creative or technical ideas with the engineers reading your ReadMes.
-
-In either sentences or bullets, explain what your future improvements would be.
-
-Insert your Future Improvements here:
+These include:
+- Adding an Outdoor Climbs page, which would have a GeoLocation tag users could update so other users can see where the climb is.
+- Add a gym page for the app.
