@@ -1,20 +1,26 @@
 <%- include('../partials/header') %>
-<div class="row justify-content-center"></div>
-<table class="table table-sm">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="row">Title</th>
-      <th scope="row">Climb Grade Rating</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% climbs.forEach(function(c) { %>
+<div class="row justify-content-center">
+  <table class="table table-sm">
+    <thead class="thead-dark">
       <tr>
-        <td><%= c.title %></td>
-        <td><%= c.gradeRating %></td>
-        <td><a href="/climbs/<%= c._id %>" id="details">Check me out!</a></td>
+        <th scope="row">Title</th>
+        <th scope="row">Climb Grade Rating</th>
+        <th></th>
+        <th></th> <!-- New column for delete button/link -->
       </tr>
+    </thead>
+    <tbody>
+      <% climbs.forEach(function(c) { %>
+        <tr>
+          <td><%= c.title %></td>
+          <td><%= c.gradeRating %></td>
+          <td><a href="/climbs/<%= c._id %>" id="details">Check me out!</a></td>
+          <td>
+            <form method="POST" action="/climbs/<%= c._id %>?_method=DELETE">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
       <% }); %>
     </tbody>
   </table>

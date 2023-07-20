@@ -8,8 +8,19 @@ module.exports = {
   new: newClimb,
   create,
   edit,
-  delete: deleteEquip
+  delete: deleteEquip,
+  delete: deleteClimb
 };
+
+async function deleteClimb(req, res) {
+  try {
+    const { id } = req.params;
+    await Climb.findByIdAndDelete(id);
+    res.redirect('/climbs'); // Redirect to the home page or the page where the climbs are listed after deletion
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 async function deleteEquip(req, res) {
   try {
@@ -23,8 +34,8 @@ async function deleteEquip(req, res) {
 
     await climb.save();
     res.redirect(`/climbs/${req.params.id}`);
-  } catch (error) {
-    res.status(500).send("Error updating climb.");
+  } catch (err) {
+    console.log(err);
   }
 }
 
