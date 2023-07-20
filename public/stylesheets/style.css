@@ -95,6 +95,8 @@ title {
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 #new-form *,
 #add-review-form *,
@@ -102,25 +104,30 @@ title {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 #new-form input[type="submit"] {
   grid-column: span 2;
   width: 10rem;
   margin-left: auto;
+  align-items: center;
+  justify-content: center;
 }
 #add-review-form,
 #add-equipment-form {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
   margin-bottom: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 #add-review-form input[type="submit"],
 #add-equipment-form input[type="submit"]  {
   width: 10rem;
   grid-column: 2 / 3;
+  align-items: center;
+  justify-content: center;
 }
 .navbar-brand {
   color:red;
