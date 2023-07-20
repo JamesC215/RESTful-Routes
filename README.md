@@ -122,6 +122,8 @@ After doing these steps, I created basic landing pages that I would need through
 
 I created basic navigation around the app using the MVC method, of which I created hyperlinks through HTML and attached GET requests so the server would recognise that we were wanting to navigate to a new page.
 
+### At this stage, this is what my app looked like: 
+
 Then, I moved onto adding features to my app, of which the CREATE functionality came first:
 
 I referenced this line of code in my climbs.js router:
@@ -179,6 +181,7 @@ The Navbar "Add new climb" is not highlighted when it is selected like the other
 Upon completion of the project, I had several things I wanted to implement but I either did not have the time or the technical ability to do so.
 
 These include:
+- Add more update/delete functionality to the 'Climbs' page, so users can edit/delete the climbs and start again.
 - I wanted to add a page with a carousel of pictures you can scroll through, and I would have implemented this through Bootstrap, however, I did not have the time for it.
 - Adding an Outdoor Climbs page, which would have a GeoLocation tag users could update so other users can see where the climb is.
 - Media queries for phones, tablets, smaller screens etc.
