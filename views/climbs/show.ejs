@@ -2,33 +2,46 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div>Title: </div>
+  <div><u>Title:</u> </div>
   <div><%= climb.title %></div>
-  <div>Grade Rating: </div>
+  <br>
+  <div><u>Grade Rating: </u></div>
   <div><%= climb.gradeRating %></div>
-  <div>Completed: </div>
+  <br>
+  <div><u>Completed:</u> </div>
   <div><%= climb.completed ? 'Yes' : 'No' %></div>
-  <div>Equipment Needed:</div>
+  <% if (user) { %>
+  <a href="/climbs/<%= climb.id %>/edit">Edit Completion</a>
+  <br>
+  <% } %>
+  <br>
+  <div><u>Equipment Needed:</u></div>
   <ul>
     <% climb.equipment.forEach(e => { %>
       <li>
         <%= e.name %>
-        <form method="POST" action="/climbs/<%= climb._id %>/equipment/<%= e._id %>?_method=DELETE">
+        <form method="POST" action="/climbs/<%= e._id %>?_method=DELETE">
+          <% if (user) { %>
           <button type="submit">Delete</button>
+          <% } %>
         </form>
       </li>
     <% }); %>
   </ul>
 </section>
 <form id="add-climb-to-equip" action="/climbs/<%= climb._id %>/equipments" method="POST">
+  <% if (user) { %>
   <select name="equipmentId">
     <%- equipments.map(e => 
       `<option value="${e._id}">${e.name}</option>`).join('') %>
   </select>
   <button type="submit">Add to Equipment List</button>
+  <% } %>
 </form>
 
-<br><br><h2>Reviews</h2>
+<br>
+<h2>Reviews</h2>
+<% if (user) { %>
 <form id="add-review-form" method="POST"
   action="/climbs/<%= climb._id %>/reviews">
   <label>Review:</label>
@@ -43,11 +56,12 @@
   </select>
   <input type="submit" value="Add Review">
 </form>
-
+<% } %>
 <% if (climb.reviews.length) { %>
   <table>
     <thead>
       <tr>
+        <th>User</th>
         <th>Date</th>
         <th>Review</th>
         <th>Rating</th>
@@ -58,19 +72,20 @@
       <% climb.reviews.forEach(function(r) { %>
         <% total += r.rating %>
         <tr>
+          <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.content %></td>
           <td><%= r.rating %></td>
         </tr>
       <% }); %>
       <tr>
-        <td colspan="2"></td>
+        <td colspan="3"></td>
         <td><strong><%= (total / climb.reviews.length).toFixed(1) %></strong></td>
       </tr>
     </tbody>
   </table>
 <% } else { %>
-  <h5>No Reviews Yet</h5>
+  <h5>No Reviews Yet <br> Log in to add a review</h5>
 <% } %>
   
 <%- include('../partials/footer') %>

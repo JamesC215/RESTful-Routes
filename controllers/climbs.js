@@ -6,10 +6,19 @@ module.exports = {
   show,
   new: newClimb,
   create,
-
+  edit,
+  delete: deleteEquip
 };
 
+function deleteEquip(req, res) {
+  Climb.deleteOne(req.params.id);
+  res.redirect('/climbs')
+}
 
+function edit(req, res) {
+  const climb = Climb.getOne(req.params.id);
+  res.render('/climbs');
+}
 
 async function index(req, res) {
   const climbs = await Climb.find({});
@@ -36,6 +45,6 @@ async function create(req, res) {
     res.redirect(`/climbs/${climb._id}`);
   } catch (err) {
     console.log(err);
-    res.render('climbs/new', { errorMsg: err.message });
+    res.render('climbs/new',  { title: 'Add Climb',  errorMsg: err.message });
   }
 }
