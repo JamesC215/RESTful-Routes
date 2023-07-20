@@ -35,21 +35,40 @@ We were asked to work individually on this project and given four days on Projec
 - VS Code - to write code and add features
 - Chrome Dev Tools - to debug and help figure out routes, cookies etc.
 - Google Developers Console - for Authentication and API usage
-- 
+- Terminal/Command Line - creation of folders/files and downloading of packages needed for the project
 
 
 ## Brief
-Instructions
 
-Include the brief set by your instructional team here. This sets the context of the project you were working towards and mimics briefs you will be set later in your future roles.
+See below the brief given my my instructional team:
 
-This can either be in bullets or in a paragraph.
+Your App Must:
+
+☐ Have at least 2 data entities (data resources) in addition to the User Model - one entity that represents the main functional idea for your app and another with a One:Many or Many:Many relationship with that main entity (embedded or referenced).
+
+☐ Use OAuth authentication.
+
+☐ Implement basic authorization that restricts access to features that need a logged in user in order to work (typically CUD data operations) by "protecting" those routes from anonymous users using the ensureLoggedIn middleware from the OAuth lesson. In addition, ensure that editing and deletion of a data resource can only be done by the user that created that data (this is done in the controller - refer to the Guide to User-Centric CRUD).
+
+☐ Have full-CRUD data operations somewhere within the app's features. For example, you can have functionality that Creates & Updates a post and satisfy Delete functionality by implementing the ability to delete comments.
+
+☐ Be styled such that the app looks and feels similar to apps we use on a daily basis - in other words, it should have a consistent and polished user interface.
+
+☐ Be deployed online (Heroku).
+
+Optionally, Your App May:
+
+☐ Consume a third-party API. If you choose to implement this option, it's likely that the data from the API will be a key data resource in your app, therefore it's important to consider how to implement whatever CRUD data operations will apply. For example, when will data from the API find its way into your database? Be sure to discuss with an instructor when planning your app's features.
+
+☐ Expose its own API where it returns data resources as JSON.
 
 
-Insert your Brief here:
 
+Necessary Deliverables
 
+☐ A working full-stack app that meets or exceeds the above technical requirements, built by you, and hosted on Heroku.
 
+A README.md file with these sections (here's a basic template):☐ App Title: Contains a description of what the app does and optional background info.☐ Screenshot(s): A screenshot of your app's landing page and any other screenshots of interest.☐ Technologies Used: List of the technologies used.☐ Getting Started: Include a link to the deployed app and your Trello board with the project's planning.☐ Next Steps: Planned future enhancements (icebox items).
 
 ## Planning
 
@@ -72,7 +91,9 @@ Not every project will include the above, but it’s important to discuss any of
 
 Insert your Planning here:
 
+For the majority of the planning stage, I used a Trello Board with all of the instructions/information I would need to create the project, including Wireframes (created through https://excalidraw.com/) and an ERD to guide me through the MVC stage of my project.
 
+See below a screenshot of my Trello Board:
 
 
 
