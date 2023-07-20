@@ -32,6 +32,9 @@ We were asked to work individually on this project and given four days on Projec
 - HTML - to display information on pages
 
 **Development Tools**
+- VS Code - to write code and add features
+- Chrome Dev Tools - to debug and help figure out routes, cookies etc.
+- Google Developers Console - for Authentication and API usage
 - 
 
 
