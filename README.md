@@ -1,4 +1,4 @@
-# RESTful-Routes Web Application
+# RESTful-Routes Rock Climbing Planner
 ## Description
 
 As a cohort of General Assembly SEI-73, we were given the task of creating a web application and deploying it through Heroku. 
