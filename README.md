@@ -175,9 +175,9 @@ With all of these methods, I had my MVP for CRUD functionality.
 
 I then went on to styling through CSS and Bootstrap, but I did not get as much done as I had hoped.
 
-This is what my app looked like upon completion:
+### This is what my app looked like upon completion:
 
-
+<img width="1416" alt="Screenshot 2023-07-21 at 01 21 59" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/7ab135de-cf28-471a-8b3d-865889cd328d">
 
 ## Challenges
 
