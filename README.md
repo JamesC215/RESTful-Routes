@@ -13,6 +13,7 @@ As a Rock Climber myself, I thought it would be a good app to create.
 
 ## Deployment link
 
+https://restful-routes-bbb208fbac36.herokuapp.com/climbs
 
 ## Getting Started/Code Installation
 
@@ -96,22 +97,6 @@ To create my ERD, I used the website: https://www.lucidchart.com/pages/
 
 ## Build/Code Process
 
-Instructions
-
-The Build/Code Process will be the longest section of your ReadMe and will be most insightful to the engineers that review them. This is where you will discuss the steps you took to code the project.
-
-You want to see your ReadMes as a way to walk the engineers through your approach and problem solving from the start of the project through to the end.
-
-You'll need to include a minimum of 3-4 code snippets, highlighting code you're particularly proud of and these code snippets will have descriptions on what you did, how and why to set the context of the snippet you include. These explanations are important for the engineers, as they will want to understand what you did and the reasoning behind the steps you took.
-
-You don't need to document every single thing you coded, but walk them through the key sections of the project build.
-
-For any group project, you will just focus on your contributions. 
-
-Some people will document the build/code process by discussing the key stages they worked on. Others will do a day by day guide. It’s entirely up to you how you structure this, as long as you discuss all the key things above.
-
-Insert your Build/Code Process here:
-
 To begin my build, I started by creating a skeleton app through Express-Generator to create a rudimentary Express application that I could edit to build my project.
 
 I then installed all of the relevant packages I would need by running the command npm (Node Package Manager) to install what I needed, such as Mongoose, Google OAuth and Method_Override.
@@ -134,7 +119,8 @@ I referenced this line of code in my climbs.js router:
 And used the function below in my climbs.js controller to create a new form to add a climb.
 The code snippet below allows the users functionality to create a new climb, and this function is one that took me quite a while.
 I used an async function with try/catch method, to catch any errors that may arise from the creation of the climb.
-`async function create(req, res) {
+```
+async function create(req, res) {
   req.body.completed = !!req.body.completed;
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
@@ -146,9 +132,52 @@ I used an async function with try/catch method, to catch any errors that may ari
     console.log(err);
     res.render('climbs/new', { errorMsg: err.message });
   }
-}`
+}
+```
 
 I then wanted to implement updating and destroying functionality into my application, of which I had been struggling to do throughout my project, and thus I would like to show these snippets below:
+
+```
+async function deleteEquip(req, res) {
+  try {
+    const climb = await Climb.findById(req.params.id).populate('equipment');
+    const newEquipment = climb.equipment.filter((item) => item._id.toString() !== req.params.equipmentid);
+    const defaultUser = req.user; 
+    climb.equipment = newEquipment;
+    climb.reviews.forEach((review) => {
+      review.user = review.user || defaultUser;
+    });
+
+    await climb.save();
+    res.redirect(`/climbs/${req.params.id}`);
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
+The function above I worked on with one of my Teaching Assistants, Matthew, which removes each equipment item off the page when the delete button is pressed, and will not remove it from my main equipment list that has been created. I used a filter method to filter through each item and remove it alongside a for each function, so that it gets each items ObjectId and deletes only that item.
+
+```
+async function deleteClimb(req, res) {
+  try {
+    const { id } = req.params;
+    await Climb.findByIdAndDelete(id);
+    res.redirect('/climbs');
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
+
+The above function deletes a whole climb, including all of its details from the database. This one was a bit easier to implement, by using a try/catch method and also a findByIdAndDelete function; I only discovered this very recently but it is very handy indeed!
+
+With all of these methods, I had my MVP for CRUD functionality.
+
+I then went on to styling through CSS and Bootstrap, but I did not get as much done as I had hoped.
+
+### This is what my app looked like upon completion:
+
+<img width="1416" alt="Screenshot 2023-07-21 at 01 21 59" src="https://github.com/JamesC215/RESTful-Routes/assets/136309778/7ab135de-cf28-471a-8b3d-865889cd328d">
 
 ## Challenges
 
@@ -175,7 +204,9 @@ I know now I need to be a bit more proactive when I am coding, as I get stuck on
 ## Bugs
 
 The page changes size depending on whether you are logged in or not.
+
 The avatar images on the reviews section do not render properly. Need to add CSS or Bootstrap to sort this.
+
 The Navbar "Add new climb" is not highlighted when it is selected like the other options are. 
 
 ## Future Improvements
@@ -183,7 +214,7 @@ The Navbar "Add new climb" is not highlighted when it is selected like the other
 Upon completion of the project, I had several things I wanted to implement but I either did not have the time or the technical ability to do so.
 
 These include:
-- Add more update/delete functionality to the 'Climbs' page, so users can edit/delete the climbs and start again.
+- Add more update/delete functionality to the 'Climbs' page, so users can edit/delete their reviews and start again.
 - I wanted to add a page with a carousel of pictures you can scroll through, and I would have implemented this through Bootstrap, however, I did not have the time for it.
 - Adding an Outdoor Climbs page, which would have a GeoLocation tag users could update so other users can see where the climb is.
 - Media queries for phones, tablets, smaller screens etc.
