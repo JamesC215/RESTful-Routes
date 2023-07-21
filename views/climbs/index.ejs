@@ -16,9 +16,11 @@
           <td><%= c.gradeRating %></td>
           <td><a href="/climbs/<%= c._id %>" id="details">Check me out!</a></td>
           <td>
+            <% if (user) { %>
             <form method="POST" action="/climbs/<%= c._id %>?_method=DELETE">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
+            <% } %>
           </td>
         </tr>
       <% }); %>
