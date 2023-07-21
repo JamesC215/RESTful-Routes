@@ -8,7 +8,7 @@ module.exports = {
   new: newClimb,
   create,
   edit,
-  delete: deleteEquip,
+  update,
   delete: deleteClimb
 };
 
@@ -16,13 +16,13 @@ async function deleteClimb(req, res) {
   try {
     const { id } = req.params;
     await Climb.findByIdAndDelete(id);
-    res.redirect('/climbs'); // Redirect to the home page or the page where the climbs are listed after deletion
+    res.redirect('/climbs');
   } catch (err) {
     console.log(err);
   }
 }
 
-async function deleteEquip(req, res) {
+async function update(req, res) {
   try {
     const climb = await Climb.findById(req.params.id).populate('equipment');
     const newEquipment = climb.equipment.filter((item) => item._id.toString() !== req.params.equipmentid);
