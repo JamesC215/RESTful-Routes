@@ -31,11 +31,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+// app.use(session({
+//   secret: process.env.SECRET,
+//   resave: false,
+//   saveUninitialized: true
+// }));
 app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: true
-}));
+  secret: 'secretidhere', 
+  resave: false, 
+  saveUninitialized: false
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
