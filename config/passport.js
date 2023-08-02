@@ -6,8 +6,7 @@ passport.use(new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: 'https://restful-routes-bbb208fbac36.herokuapp.com/climbs/oauth2callback'
-    // callbackURL: process.env.GOOGLE_CALLBACK
+    callbackURL: process.env.GOOGLE_CALLBACK
   },
 
   async function(accessToken, refreshToken, profile, cb) {
