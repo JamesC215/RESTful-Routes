@@ -13,7 +13,7 @@ As a Rock Climber myself, I thought it would be a good app to create.
 
 ## Deployment link
 
-[RESTful Routes on Heroku](https://climbing-planner-bc528552021f.herokuapp.com/)
+https://climbing-planner-bc528552021f.herokuapp.com/
 
 ## Getting Started/Code Installation
 
